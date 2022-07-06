@@ -1,0 +1,61 @@
+# 0-add_integer.txt
+
+============================
+How to Use 0-add_integer.py
+===========================
+
+This module defines an integer addition function ``add_integer(a, b=98)``.
+
+Using ``add_integer``
+--------------------
+
+Import the fonction:
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Now use fonction:
+
+	>>> add_integer(1, 2)
+	>>> 3
+
+	>>> add_integer(1, -2)
+	>>> -1
+
+	>>> add_integer(1.4, 2)
+	>>> 3
+
+	>>> add_integer(2)
+	>>> 100
+
+	>>> add_integer(5.0, 3.1)
+	>>> 8
+
+TypeError:
+
+	>>> add_integer(1, "test")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer("test")
+        Traceback (most recent call last):
+        TypeError: a must be an integer	
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer()
+   	Traceback (most recent call last):
+    	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+   	>>> add_integer(1000e1000)
+    	Traceback (most recent call last):
+    	OverflowError: cannot convert float infinity to integer
+
+	>>> add_integer("Hello", "World")
+    	Traceback (most recent call last):
+    	TypeError: a must be an integer
+
+    	>>> add_integer(float('nan'))
+    	Traceback (most recent call last):
+    	ValueError: cannot convert float NaN to integer
