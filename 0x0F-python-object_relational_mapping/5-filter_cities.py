@@ -3,16 +3,15 @@
 script that takes in the name of a state as an argument
 and lists all cities of that state, using the database
 """
-import sys
 import MySQLdb
-
+import sys
 if __name__ == "__main__":
     db_user = sys.argv[1]
-    db_password = sys.argv[2]
+    db_passwd = sys.argv[2]
     db_name = sys.argv[3]
     state_name = sys.argv[4]
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=db_user, passwd=db_password, db=db_name)
+    db = MySQLdb.connect(host="localhost", port=3306, user=db_user,
+                         passwd=db_passwd, db=db_name)
     cur = db.cursor()
     cur.execute("""
     SELECT cities.name
