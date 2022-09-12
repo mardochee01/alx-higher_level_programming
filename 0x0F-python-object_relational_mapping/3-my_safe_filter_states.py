@@ -16,9 +16,9 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306,
                          user=db_user, passwd=db_password, db=db_name)
     cursor = db.cursor()
-    sqlquery = ("""SELECT * FROM states 
+    sqlquery = ("""SELECT * FROM states
                 WHERE states.name=%(state_name)s
-                ORDER BY id""",{'state_name': state_name})
+                ORDER BY id""", {'state_name': state_name})
     cursor.execute(sqlquery)
     data = cursor.fetchall()
     for states in data:
