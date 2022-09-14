@@ -17,7 +17,8 @@ if __name__ == "__main__":
     name_search = sys.argv[4]
 
     engine = create_engine("mysql+mysqldb//{}:{}@localhost:3306/{}".
-                           format(db_user, db_passwd, db_name))
+                           format(db_user, db_passwd, db_name),
+                           pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
