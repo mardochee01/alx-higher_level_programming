@@ -6,7 +6,6 @@ of a State object from the database
 """
 
 import sys
-from unicodedata import name
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
