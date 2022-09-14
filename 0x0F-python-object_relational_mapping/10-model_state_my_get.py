@@ -23,9 +23,12 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).all()
+    match = None
+    states = session.query(State).filter(State.name == name_search).all()
     for state in states:
-        if name_search == state.name:
-            print("{}".format(state.id))
-        else:
-            print("Not found")
+        match = state.id
+    if match:
+        print("{}".format(match))
+    else:
+        print("Not found")
+    session.close()
