@@ -14,9 +14,9 @@ if __name__ == "__main__":
     db_user = sys.argv[1]
     db_passwd = sys.argv[2]
     db_name = sys.argv[3]
-    name_search = sys.argv[4]
+    state_search = sys.argv[4]
 
-    engine = create_engine("mysql+mysqldb//{}:{}@localhost:3306/{}".
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
                            format(db_user, db_passwd, db_name),
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     session = Session()
 
     match = None
-    for state in session.query(State).filter(State.name == name_search).all():
+    for state in session.query(State).filter(State.name == state_search).all():
         match = state.id
     if match:
         print(match)
