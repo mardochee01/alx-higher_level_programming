@@ -10,7 +10,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
-
 if __name__ == "__main__":
     db_user = sys.argv[1]
     db_passwd = sys.argv[2]
@@ -23,9 +22,7 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    states = session.query(State).order_by(State.id).filter(
-        State.name.like("%a%"))
-    for state in states:
-        print("{}: {}".format(State.id, State.name))
+    for state in session.query(State).order_by(State.id).all():
+        if 'a' in state.name:
+            print("{}: {}".format(state.id, state.name))
     session.close()
